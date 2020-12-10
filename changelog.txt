@@ -1,0 +1,17 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## [v1.0.0] - 2019-06-27
+### Notes ###
+- This is the initial release of the Seagrass Site-Level Production dataset, currently containing data from 2015 to the early 2019
+- Due to changes in survey design and data management protocols, this initial release will include data starting May 2015. A later update (date TBD) will include 2014 data that will be restructured to match current survey designs and data structures
+### Added ###
+- changelog.txt to track future changes to this project
+- data_dictionary.csv for defining variables found within datasets
+- Seagrass Site-Level Production Metadata record
+- Hakai Seagrass Protocol for in-depth explanation of methods
+- seagrass_density_survey.csv containing density survey data from 2015 - 2019
+- seagrass_habitat_survey.csv containing density survey data from 2015 - 2019
