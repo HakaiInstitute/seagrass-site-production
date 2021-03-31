@@ -79,6 +79,7 @@ viewYearCounts(zmDensity, "2016")
 viewYearCounts(zmDensity, "2017")
 viewYearCounts(zmDensity, "2018")
 viewYearCounts(zmDensity, "2019")
+viewYearCounts(zmDensity, "2020")
 
 # Plot each year of data, check for suspect values
 viewYearContinuous(zmDensity, "2015", "density")
@@ -86,6 +87,7 @@ viewYearContinuous(zmDensity, "2016", "density")
 viewYearContinuous(zmDensity, "2017", "density")
 viewYearContinuous(zmDensity, "2018", "density")
 viewYearContinuous(zmDensity, "2019", "density")
+viewYearContinuous(zmDensity, "2020", "density")
 
 
 # For suspect values (or number of observations), use the below chunk 
@@ -116,6 +118,8 @@ viewYearCounts(zmHabitat, "2015")
 viewYearCounts(zmHabitat, "2016")
 viewYearCounts(zmHabitat, "2017")
 viewYearCounts(zmHabitat, "2018")
+viewYearCounts(zmHabitat, "2019")
+viewYearCounts(zmHabitat, "2020")
 
 ## Data Subset ##
 # Now all the data has been checked, the final step is to subset the
