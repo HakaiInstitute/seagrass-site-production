@@ -95,7 +95,7 @@ viewYearContinuous(zmDensity, "2020", "density")
 zmDensity %>% 
   filter(survey == "CHOKED_PASS",  # enter the survey name, in quotes
          year(date) == 2017,  # enter year here, no quotes needed
-         month(date) == 11) %>%  # enter month here, no quotes
+         month(date) == 8) %>%  # enter month here, no quotes
   ggplot(aes(x   = factor(transect_dist),
              y   = density)) +  # enter variable of choice here, 
   geom_boxplot(outlier.colour = "red") +
