@@ -1,0 +1,167 @@
+---
+title: "Seagrass Site-level production data package"
+author: "Zach Monteith & Faye Manning"
+date: "10/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Seagrass Site-level production data package
+This script loads, cleans, and combines the datasets required for the Hakai Nearshore: Seagrass Site-level production data package. All of these data are stored on the Hakai EIMS Data Portal and accessed using the HakaiApi R Package. 
+
+***
+
+### Setup
+
+Clear work space prior to starting
+```{r}
+rm(list = ls())
+```
+
+Load necessary packages
+```{r}
+lapply(c("tidyverse",
+         "lubridate", 
+         "magrittr"),
+       library,
+       character.only = TRUE)
+```
+
+***
+### Load and tidy data
+Load data
+```{r}
+zmDensity <- read.csv("../raw-data/seagrass_density.csv")
+zmHabitat <- read.csv("../raw-data/seagrass_habitat.csv")
+```
+
+Tidy density column names
+```{r warning=FALSE}
+zmDensity <-  rename_with(zmDensity, tolower)
+colnames(zmDensity) <- gsub("\\.", "_", colnames(zmDensity))
+names(zmDensity)[names(zmDensity) == c("transect_dist__m_", "canopy_height__cm_")] <- c("transect_dist_m", "canopy_height_cm")
+colnames(zmDensity)
+```
+Tidy habitat column names
+```{r}
+zmHabitat <-  rename_with(zmHabitat, tolower)
+colnames(zmHabitat) <- gsub("\\.", "_", colnames(zmHabitat))
+names(zmHabitat)[names(zmHabitat) == "transect_dist__m_"] <- "transect_dist_m"
+colnames(zmHabitat)
+```
+Fix date format in both data sets
+```{r}
+zmDensity$date <- as.Date(zmDensity$date, format = "%m/%d/%Y")
+zmHabitat$date <- as.Date(zmHabitat$date, format = "%m/%d/%Y")
+```
+
+### Data QC
+Before the data is ready to be packaged, this section will perform some basic quality control checks, ensuring all data is present and all values seem appropriate
+
+#### Density surveys
+Check all data are present:
+- annual sites (Triquet, Goose, McMullin) have one set of data each year
+- seasonal sites (Choked, Pruth, Koeye) have the same number of summer visits
+- Choked and Pruth have February and November visits in 2017 and 2018, and a February visit in 2019
+- secondary annual sites (McMullin S, Goose SE, Triquet N) only have 3 observations transects in 2018
+
+Create a function for viewing number of observations at all sites, in a year, by month
+```{r}
+viewYearCounts <- function (data, year) {
+  data %>%
+    filter(year(date) == year) %>%
+    ggplot(aes(x    = factor(transect_dist_m),
+               fill = month(date))) +
+    geom_histogram(stat = "count") +
+    facet_grid(survey ~ factor(month(date))) +
+    labs(title = year) +
+    theme_classic()
+}
+```
+
+Create a function for viewing all sites in a year, by month, for a given variable
+```{r}
+viewYearContinuous <- function (data, year, yVar, xVar = "survey") {
+  data %>%
+    filter(year(date) == year) %>%
+    ggplot(aes_string(x = xVar,
+                      y = yVar)) +
+    geom_boxplot(outlier.colour = "red") +
+    facet_grid(~ month(date)) +
+    labs(title = year) +
+    theme_classic() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
+```
+
+Plot each year of data; check correct number of values are present
+```{r}
+viewYearCounts(zmDensity, "2015")
+viewYearCounts(zmDensity, "2016")
+viewYearCounts(zmDensity, "2017")
+viewYearCounts(zmDensity, "2018")
+viewYearCounts(zmDensity, "2019")
+viewYearCounts(zmDensity, "2020")
+```
+
+Plot each year of data; check for suspect values
+```{r}
+viewYearContinuous(zmDensity, "2015", "density")
+viewYearContinuous(zmDensity, "2016", "density")
+viewYearContinuous(zmDensity, "2017", "density")
+viewYearContinuous(zmDensity, "2018", "density")
+viewYearContinuous(zmDensity, "2019", "density")
+viewYearContinuous(zmDensity, "2020", "density")
+```
+
+For suspect values (or number of observations), use the below chunk of code to "zoom in"
+```{r}
+zmDensity %>% 
+  filter(survey == "CHOKED_PASS",  # enter the survey name, in quotes
+         year(date) == 2020,  # enter year here, no quotes needed
+         month(date) == 7) %>%  # enter month here, no quotes needed
+  ggplot(aes(x   = factor(transect_dist_m),
+             y   = density)) +  # enter variable of choice here, 
+  geom_boxplot(outlier.colour = "red") +
+  facet_grid(~ site_id) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Once suspect values have been found, confirm value with hard copy datasheets.
+If values have been incorrectly entered, fix value in database.
+Repeat as necessary, then re-download density data from the portal. 
+
+
+#### Habitat surveys 
+Use 'viewYearCounts' function created for density data for viewing number of observations at all sites, in a year, by month; because these data are categorical (as opposed to the continuous density data), we will not check the range of values, but we can confirm the correct number of observations are present for each site visit.
+
+Plot each year of data; check correct number of values are present
+```{r}
+viewYearCounts(zmHabitat, "2016")
+viewYearCounts(zmHabitat, "2017")
+viewYearCounts(zmHabitat, "2018")
+viewYearCounts(zmHabitat, "2019")
+viewYearCounts(zmHabitat, "2020")
+```
+
+Once suspect values have been found, confirm value with hard copy datasheets.
+Correct any errors in database, then re-download habitat data from the portal. 
+
+***
+
+### Data Subset
+Once all data have been checked, subset the required variables for this data set from each data frame, and then save into finished, usable data sets
+```{r}
+write.csv(zmDensity, "../seagrass_density_survey.csv")
+write.csv(zmHabitat,"../seagrass_habitat_survey.csv")
+```
+
+***
+
+#### Final notes
+- the data portal concatenates everything from the "comments" column into the "quality_log" column, so consider omitting the blank "comments" column in the final, usable data sets?
+
