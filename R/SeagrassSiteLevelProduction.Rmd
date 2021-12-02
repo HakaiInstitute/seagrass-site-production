@@ -52,11 +52,6 @@ colnames(zmHabitat) <- gsub("\\.", "_", colnames(zmHabitat))
 names(zmHabitat)[names(zmHabitat) == "transect_dist__m_"] <- "transect_dist_m"
 colnames(zmHabitat)
 ```
-Fix date format in both data sets
-```{r}
-zmDensity$date <- as.Date(zmDensity$date, format = "%m/%d/%Y")
-zmHabitat$date <- as.Date(zmHabitat$date, format = "%m/%d/%Y")
-```
 
 ### Data QC
 Before the data is ready to be packaged, this section will perform some basic quality control checks, ensuring all data is present and all values seem appropriate
@@ -105,6 +100,7 @@ viewYearCounts(zmDensity, "2017")
 viewYearCounts(zmDensity, "2018")
 viewYearCounts(zmDensity, "2019")
 viewYearCounts(zmDensity, "2020")
+viewYearCounts(zmDensity, "2021")
 ```
 
 Plot each year of data; check for suspect values
@@ -115,14 +111,15 @@ viewYearContinuous(zmDensity, "2017", "density")
 viewYearContinuous(zmDensity, "2018", "density")
 viewYearContinuous(zmDensity, "2019", "density")
 viewYearContinuous(zmDensity, "2020", "density")
+viewYearContinuous(zmDensity, "2021", "density")
 ```
 
 For suspect values (or number of observations), use the below chunk of code to "zoom in"
 ```{r}
 zmDensity %>% 
-  filter(survey == "CHOKED_PASS",  # enter the survey name, in quotes
-         year(date) == 2020,  # enter year here, no quotes needed
-         month(date) == 7) %>%  # enter month here, no quotes needed
+  filter(survey == "TRIQUET_BAY",  # enter the survey name, in quotes
+         year(date) == 2021,  # enter year here, no quotes needed
+         month(date) == 8) %>%  # enter month here, no quotes needed
   ggplot(aes(x   = factor(transect_dist_m),
              y   = density)) +  # enter variable of choice here, 
   geom_boxplot(outlier.colour = "red") +
@@ -146,10 +143,15 @@ viewYearCounts(zmHabitat, "2017")
 viewYearCounts(zmHabitat, "2018")
 viewYearCounts(zmHabitat, "2019")
 viewYearCounts(zmHabitat, "2020")
+viewYearCounts(zmHabitat, "2021")
 ```
 
 Once suspect values have been found, confirm value with hard copy datasheets.
 Correct any errors in database, then re-download habitat data from the portal. 
+
+##### Suspect values checked
+2020 - FM
+2021 - FM
 
 ***
 
