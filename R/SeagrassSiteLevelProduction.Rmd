@@ -154,19 +154,6 @@ Correct any errors in database, then re-download habitat data from the portal.
 2021 - FM
 
 
-#### Fix and QC depths
-
-Depths entered in feet in 2016 -- convert to metres
-```{r}
-
-```
-
-Flag depths 10m+ for manual confirmation
-```{r}
-
-```
-
-
 ***
 
 ### Data Subset
