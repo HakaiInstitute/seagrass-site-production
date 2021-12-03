@@ -153,6 +153,25 @@ Correct any errors in database, then re-download habitat data from the portal.
 2020 - FM
 2021 - FM
 
+
+#### Fix and QC depths
+
+Depths entered in feet in 2016 -- convert to metres
+```{r}
+density_m <- zmDensity %>% 
+  filter(year(date) == 2016) %>% 
+  mutate(depth = depth * 0.3048)
+zmDensity <- left_join(density_m, zmDensity)
+remove(density_m)
+```
+
+
+Flag depths 10m+ for manual confirmation
+```{r}
+zmDensity %>% 
+  filter(depth > 10)
+```
+
 ***
 
 ### Data Subset
