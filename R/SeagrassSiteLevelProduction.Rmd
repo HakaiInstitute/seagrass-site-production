@@ -1,7 +1,7 @@
 ---
 title: "Seagrass Site-level production data package"
 author: "Zach Monteith & Faye Manning"
-date: "10/27/2021"
+date: "2021-10-27"
 output: html_document
 ---
 
@@ -25,7 +25,8 @@ Load necessary packages
 ```{r}
 lapply(c("tidyverse",
          "lubridate", 
-         "magrittr"),
+         "magrittr",
+         "DataCombine"),
        library,
        character.only = TRUE)
 ```
@@ -36,6 +37,7 @@ Load data
 ```{r}
 zmDensity <- read.csv("../raw-data/seagrass_density.csv")
 zmHabitat <- read.csv("../raw-data/seagrass_habitat.csv")
+names <- read.csv("../raw-data/seagrass_names.csv")
 ```
 
 Tidy density column names
@@ -156,20 +158,70 @@ Correct any errors in database, then re-download habitat data from the portal.
 
 #### Fix and QC depths
 
-Depths entered in feet in 2016 -- convert to metres
+2016 depths are in feet -- convert to metres
 ```{r}
-density_m <- zmDensity %>% 
-  filter(year(date) == 2016) %>% 
-  mutate(depth = depth * 0.3048)
-zmDensity <- left_join(density_m, zmDensity)
-remove(density_m)
+zmDensity <- zmDensity %>% 
+    mutate(depth = if_else(year(date) == 2016, depth * 0.3048, depth))
+```
+
+Flag depths >10m and see if they look like entering errors (missed decimal; check raw data sheets if needed)
+```{r}
+zmDensity %>% 
+  filter(depth >= 10)
+```
+
+Correct those depths
+```{r}
+zmDensity <- zmDensity %>% 
+    mutate(depth = if_else(depth >= 10, depth * 0.1, depth))
+```
+
+#### Fix collector and tender names
+
+Import acceptable names
+```{r}
+# acceptable diver names
+diversnames_accepted <- names$divers %>% data.frame
+colnames(diversnames_accepted) <- "name"
+
+# acceptable tender names
+tendersnames_accepted <- names$tenders %>% data.frame
+colnames(tendersnames_accepted) <- "name"
 ```
 
 
-Flag depths 10m+ for manual confirmation
+Density dataset
 ```{r}
-zmDensity %>% 
-  filter(depth > 10)
+# fix diver names
+density_diversnames_data <- unique(zmDensity$surveyor) %>% sort %>% data.frame
+colnames(density_diversnames_data) <- "name"
+density_diversnames_tofix <- anti_join(density_diversnames_data, diversnames_accepted)
+density_diversnames_tofix$replace <- c("andrew", "derek", "derek", "kyle", "ondine", "ondine", "other", "zach") 
+zmDensity <- FindReplace(zmDensity, "surveyor", density_diversnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
+
+# fix tender names
+density_tendersnames_data <- unique(zmDensity$dive_supervisor) %>% sort %>% data.frame
+colnames(density_tendersnames_data) <- "name"
+density_tendersnames_tofix <- anti_join(density_tendersnames_data, tendersnames_accepted)
+density_tendersnames_tofix$replace <- c("andrew", "derek", "derek", "kyle", "ondine", "ondine", "other", "zach") 
+zmDensity <- FindReplace(zmDensity, "dive_supervisor", density_tendersnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
+```
+
+Habitat dataset
+```{r}
+# fix diver names
+habitat_diversnames_data <- unique(zmHabitat$surveyor) %>% sort %>% data.frame
+colnames(habitat_diversnames_data) <- "name"
+habitat_diversnames_tofix <- anti_join(habitat_diversnames_data, diversnames_accepted)
+habitat_diversnames_tofix$replace <- c("andrew", "derek", "kyle", "ondine", "other", "zach") 
+zmHabitat <- FindReplace(zmHabitat, "surveyor", habitat_diversnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
+
+# fix tender names
+habitat_tendersnames_data <- unique(zmHabitat$surveyor) %>% sort %>% data.frame
+colnames(habitat_tendersnames_data) <- "name"
+habitat_tendersnames_tofix <- anti_join(habitat_tendersnames_data, tendersnames_accepted)
+habitat_tendersnames_tofix$replace <- c("other", "derek", "kyle", "ondine", "other", "zach") 
+zmHabitat <- FindReplace(zmHabitat, "dive_supervisor", habitat_tendersnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
 ```
 
 ***
