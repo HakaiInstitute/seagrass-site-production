@@ -176,6 +176,7 @@ zmDensity <- zmDensity %>%
     mutate(depth = if_else(depth >= 10, depth * 0.1, depth))
 ```
 
+
 #### Fix collector and tender names
 
 Import acceptable names
@@ -203,7 +204,7 @@ zmDensity <- FindReplace(zmDensity, "surveyor", density_diversnames_tofix, from 
 density_tendersnames_data <- unique(zmDensity$dive_supervisor) %>% sort %>% data.frame
 colnames(density_tendersnames_data) <- "name"
 density_tendersnames_tofix <- anti_join(density_tendersnames_data, tendersnames_accepted)
-density_tendersnames_tofix$replace <- c("andrew", "derek", "derek", "kyle", "ondine", "ondine", "other", "zach") 
+density_tendersnames_tofix$replace <- c("NA", "angeleen", "angeleen,carolyn,krystal", "derek", "gillian", "gillian", "kyle", "ondine", "other,zach", "zach") 
 zmDensity <- FindReplace(zmDensity, "dive_supervisor", density_tendersnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
 ```
 
@@ -220,7 +221,7 @@ zmHabitat <- FindReplace(zmHabitat, "surveyor", habitat_diversnames_tofix, from 
 habitat_tendersnames_data <- unique(zmHabitat$surveyor) %>% sort %>% data.frame
 colnames(habitat_tendersnames_data) <- "name"
 habitat_tendersnames_tofix <- anti_join(habitat_tendersnames_data, tendersnames_accepted)
-habitat_tendersnames_tofix$replace <- c("other", "derek", "kyle", "ondine", "other", "zach") 
+habitat_tendersnames_tofix$replace <- c("NA", "andrew", "ben") 
 zmHabitat <- FindReplace(zmHabitat, "dive_supervisor", habitat_tendersnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
 ```
 
