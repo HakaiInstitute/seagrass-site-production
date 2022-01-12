@@ -3,11 +3,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v1.1.0] - 2020-
+## [v1.2.1] - 2022-12-01
 ### Notes ###
-- This is the second release of the Seagrass Site-Level Production dataset, currently containing data from 2015 through 2019
-### Added ###
-- 
+- This is the fourth release of the Hakai Seagrass Site Level Production data package, to include code fixes for the data QC process. Data spans the years 2015 to 2021. Previous years' data (i.e. 2014) are not currently included due to differences in spatial sampling design.
+### Changed ###
+- changelog.txt to track future changes to this project
+- seagrass_density_survey.csv containing density survey data from 2015 - 2021
+- seagrass_habitat_survey.csv containing density survey data from 2015 - 2021
+
+## [v1.2.0] - 2021-02-12
+### Notes ###
+- This is the third release of the Hakai Seagrass Site Level Production data package, to include new data from 2021. Data now spans the years 2015 to 2021. Previous years' data (i.e. 2014) are not currently included due to differences in spatial sampling design.
+### Changed ###
+- seagrass_density_survey.csv containing density survey data from 2015 - 2021
+- seagrass_habitat_survey.csv containing density survey data from 2015 - 2021
+
+## [v1.1.0] - 2021-25-11
+### Notes ###
+- This is the second release of the Hakai Seagrass Site Level Production data package, to include new data from 2020. Data now spans the years 2015 to 2020. Previous years' data (i.e. 2014) are not currently included due to differences in spatial sampling design.
+### Changed ###
+- seagrass_density_survey.csv containing density survey data from 2015 - 2020
+- seagrass_habitat_survey.csv containing density survey data from 2015 - 2020
 
 ## [v1.0.0] - 2019-06-27
 ### Notes ###
