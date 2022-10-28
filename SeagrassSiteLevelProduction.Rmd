@@ -35,9 +35,9 @@ lapply(c("tidyverse",
 ### Load and tidy data
 Load data
 ```{r}
-zmDensity <- read.csv("../raw-data/seagrass_density.csv")
-zmHabitat <- read.csv("../raw-data/seagrass_habitat.csv")
-names <- read.csv("../raw-data/seagrass_names.csv")
+zmDensity <- read.csv("./raw-data/seagrass_density.csv")
+zmHabitat <- read.csv("./raw-data/seagrass_habitat.csv")
+names <- read.csv("./raw-data/divertender_names.csv")
 ```
 
 Tidy density column names
@@ -158,6 +158,7 @@ Correct any errors in database, then re-download habitat data from the portal.
 ##### Suspect values checked
 2020 - FM
 2021 - FM
+2022 - FM
 
 
 #### Fix and QC depths
