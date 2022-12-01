@@ -240,8 +240,8 @@ zmHabitat <- FindReplace(zmHabitat, "dive_supervisor", habitat_tendersnames_tofi
 ### Data Subset
 Once all data have been checked, subset the required variables for this data set from each data frame, and then save into finished, usable data sets
 ```{r}
-write.csv(zmDensity, "../seagrass_density_survey.csv")
-write.csv(zmHabitat,"../seagrass_habitat_survey.csv")
+write.csv(zmDensity, "./output/seagrass_density_survey.csv")
+write.csv(zmHabitat,"./output/seagrass_habitat_survey.csv")
 ```
 
 ***
