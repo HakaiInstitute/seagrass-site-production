@@ -1,16 +1,3 @@
-This readme file was created on [YYYY-MM-DD] by [NAME], and last updated 2023-02-07
-
-<help text in angle brackets should be deleted before finalizing your document>
-<[text in square brackets should be changed for your specific dataset]>
-
-
-GENERAL INFORMATION
-
-Title of Dataset: Seagrass Site-Level Production
-
-<provide at least two contacts>
-Author
-Name: Zachary L Monteith
 This readme file was generated on 2023-02-12 by ZL Monteith
 
 
