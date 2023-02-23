@@ -35,16 +35,17 @@ lapply(c("tidyverse",
 ### Load and tidy data
 Load data
 ```{r}
-zmDensity <- read.csv("../raw-data/seagrass_density.csv")
-zmHabitat <- read.csv("../raw-data/seagrass_habitat.csv")
-names <- read.csv("../raw-data/seagrass_names.csv")
+zmDensity <- read.csv("./raw-data/seagrass_density.csv")
+zmHabitat <- read.csv("./raw-data/seagrass_habitat.csv")
+names <- read.csv("./raw-data/divertender_names.csv")
 ```
 
 Tidy density column names
 ```{r warning=FALSE}
 zmDensity <-  rename_with(zmDensity, tolower)
 colnames(zmDensity) <- gsub("\\.", "_", colnames(zmDensity))
-names(zmDensity)[names(zmDensity) == c("transect_dist__m_", "canopy_height__cm_")] <- c("transect_dist_m", "canopy_height_cm")
+names(zmDensity)[names(zmDensity) == "transect_dist__m_"] <- "transect_dist_m"
+names(zmDensity)[names(zmDensity) == "canopy_height__cm_"] <- "canopy_height_cm"
 colnames(zmDensity)
 ```
 Tidy habitat column names
@@ -103,6 +104,7 @@ viewYearCounts(zmDensity, "2018")
 viewYearCounts(zmDensity, "2019")
 viewYearCounts(zmDensity, "2020")
 viewYearCounts(zmDensity, "2021")
+viewYearCounts(zmDensity, "2022")
 ```
 
 Plot each year of data; check for suspect values
@@ -114,13 +116,14 @@ viewYearContinuous(zmDensity, "2018", "density")
 viewYearContinuous(zmDensity, "2019", "density")
 viewYearContinuous(zmDensity, "2020", "density")
 viewYearContinuous(zmDensity, "2021", "density")
+viewYearContinuous(zmDensity, "2022", "density")
 ```
 
 For suspect values (or number of observations), use the below chunk of code to "zoom in"
 ```{r}
 zmDensity %>% 
   filter(survey == "TRIQUET_BAY",  # enter the survey name, in quotes
-         year(date) == 2021,  # enter year here, no quotes needed
+         year(date) == 2022,  # enter year here, no quotes needed
          month(date) == 8) %>%  # enter month here, no quotes needed
   ggplot(aes(x   = factor(transect_dist_m),
              y   = density)) +  # enter variable of choice here, 
@@ -146,6 +149,7 @@ viewYearCounts(zmHabitat, "2018")
 viewYearCounts(zmHabitat, "2019")
 viewYearCounts(zmHabitat, "2020")
 viewYearCounts(zmHabitat, "2021")
+viewYearCounts(zmHabitat, "2022")
 ```
 
 Once suspect values have been found, confirm value with hard copy datasheets.
@@ -154,6 +158,7 @@ Correct any errors in database, then re-download habitat data from the portal.
 ##### Suspect values checked
 2020 - FM
 2021 - FM
+2022 - FM
 
 
 #### Fix and QC depths
@@ -235,8 +240,8 @@ zmHabitat <- FindReplace(zmHabitat, "dive_supervisor", habitat_tendersnames_tofi
 ### Data Subset
 Once all data have been checked, subset the required variables for this data set from each data frame, and then save into finished, usable data sets
 ```{r}
-write.csv(zmDensity, "../seagrass_density_survey.csv")
-write.csv(zmHabitat,"../seagrass_habitat_survey.csv")
+write.csv(zmDensity, "./output/seagrass_density_survey.csv")
+write.csv(zmHabitat,"./output/seagrass_habitat_survey.csv")
 ```
 
 ***
