@@ -11,30 +11,30 @@ This package contains a core subset of the Hakai Nearshore seagrass monitoring d
 
 Author
 Name: Zachary L. Monteith
-ORCID: https://orcid.org/0000-0003-4963-8374
+ORCID: update
 Institution: Hakai Institute, Tula Foundation
-Address: 1713 Hyacinthe Bay Rd, Quathiaski Cove, BC, V0P 1N0
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
 Email: zach@hakai.org
 
 Co-Author
 Name: Faye Manning
 ORCID: https://orcid.org/0009-0002-9940-2458
 Institution: Hakai Institute, Tula Foundation
-Address: 1713 Hyacinthe Bay Rd, Quathiaski Cove, BC, V0P 1N0
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
 Email: faye.manning@hakai.org
 
 Co-investigator
 Name: Angeleen Olson
 ORCID: https://orcid.org/0000-0001-8443-1868
 Institution: Hakai Institute, Tula Foundation
-Address: 1713 Hyacinthe Bay Rd, Quathiaski Cove, BC, V0P 1N0
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
 Email: angeleen.olson@hakai.org
 
 Principal Investigator
 Name: Margot Hessing-Lewis
 ORCID: 
 Institution: Hakai Institute, Tula Foundation
-Address: 1713 Hyacinthe Bay Rd, Quathiaski Cove, BC, V0P 1N0
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
 Email: margot@hakai.org
 
 Date of data collection: data spans years 2015 to 2022
