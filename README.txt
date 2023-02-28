@@ -18,7 +18,7 @@ Email: zach@hakai.org
 
 Co-Author
 Name: Faye Manning
-ORCID:
+ORCID: https://orcid.org/0009-0002-9940-2458
 Institution: Hakai Institute, Tula Foundation
 Address: 1713 Hyacinthe Bay Rd, Quathiaski Cove, BC, V0P 1N0
 Email: faye.manning@hakai.org
