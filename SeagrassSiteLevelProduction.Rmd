@@ -38,6 +38,7 @@ Load data
 zmDensity <- read.csv("./raw-data/seagrass_density.csv")
 zmHabitat <- read.csv("./raw-data/seagrass_habitat.csv")
 names <- read.csv("./raw-data/divertender_names.csv")
+sites <- read.csv("./raw-data/seagrass_sites.csv")
 ```
 
 Tidy density column names
@@ -233,6 +234,33 @@ colnames(habitat_tendersnames_data) <- "name"
 habitat_tendersnames_tofix <- anti_join(habitat_tendersnames_data, tendersnames_accepted)
 habitat_tendersnames_tofix$replace <- c("angeleen", "angeleen,carolyn,krystal", "derek", "gillian", "gillian", "kyle", "ondine", "other,zach", "zach") 
 zmHabitat <- FindReplace(zmHabitat, "dive_supervisor", habitat_tendersnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
+```
+
+#### Join site metadata
+
+Tidy up column and site names
+```{r}
+sites <- rename_with(sites, tolower)
+colnames(sites) <- gsub("\\.", "_", colnames(sites))
+sites <- subset(sites, project_name == "Seagrass" & gps_level == "transect")
+
+sites$site_name <- toupper(sites$site_name)
+sites$site_name <- gsub(" ", "_", sites$site_name)
+sites$site_name <- gsub("\\.", "_", sites$site_name)
+sites$site_name <- gsub("GOOSE_SE", "GOOSE_SOUTHEAST", sites$site_name)
+sites$site_name <- gsub("GOOSE_SW", "GOOSE_SOUTHWEST", sites$site_name)
+
+sites$point_name <- gsub(".*_", "", sites$point_name)
+sites$point_name <- gsub("E", "EDGE", sites$point_name)
+sites$point_name <- gsub("I", "INTERIOR", sites$point_name)
+sites$point_name <- paste(sites$site_name, sites$point_name, sep = "_")
+```
+
+Join site metadata onto data sets
+```{r}
+zmDensity <- left_join(zmDensity, (select(sites, "point_name", "substrate", "decimal_lat", "decimal_long", "end_transect_decimal_lat", "end_transect_decimal_lon")), by = c("site_id" = "point_name"))
+
+zmHabitat <- left_join(zmHabitat, (select(sites, "point_name", "substrate", "decimal_lat", "decimal_long", "end_transect_decimal_lat", "end_transect_decimal_lon")), by = c("site_id" = "point_name"))
 ```
 
 ***
