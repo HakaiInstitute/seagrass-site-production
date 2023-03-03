@@ -1,19 +1,95 @@
-Hakai Institute Nearshore Program - Seagrass Site-Level Production Data Package v1.2.0
-
-This data package is a component of the Hakai Institute’s Nearshore research and monitoring program, designed to quantify change in seagrass ecosystems. The overarching objective of Hakai Nearshore research is to investigate the role of habitats and their associated communities, in the face of stress and disturbances from global climate change and local coastal perturbations. 
-
-This package contains a subset of the Hakai Nearshore seagrass monitoring data, made up of two .csv data files: seagrass_density_survey.csv for seagrass density surveys, and seagrass_habitat_survey.csv for seagrass habitat surveys.
-
-For details on the methodology used in each of these surveys, please see the Hakai Seagrass Protocol found within this package.
-
-For an explanation of each variable contained in the data files, please see the Data Dictionary found within this package.
-
-For details on how this package and the data contained within have changed through successive versions, see changelog.txt.
-
-This data package is licensed under a Creative Commons Attribution 4.0 International License (CC-BY). For more information, see LICENCE.txt. Creating data packages requires many scientists and data managers involved with science coordination, data aggregation, quality control, and data management. In light of the effort required to create data packages, we request that in addition to following the CC-BY license terms, that users 1) respect the data providers, and provide helpful feedback on data quality, and 2) communicate and/or collaborate with Hakai Nearshore researchers if you are considering using this dataset for manuscripts or other forms of reporting.
-
-For a complete list of Hakai seagrass data packages, please refer to: https://docs.google.com/document/d/1c4d7ZtkNbbsFT1RkSgELt5nFV6OahEsHxLA2vZI153I/edit?usp=sharing
+This readme file was generated on 2023-02-12 by ZL Monteith
 
 
-Please contact zach@hakai.org or nearshore@hakai.org for any questions.
+GENERAL INFORMATION
 
+Title of Dataset: Seagrass site-level production 1.1.0
+
+Abstract: This data package is a component of the Hakai Institute’s Nearshore research and monitoring program, designed to quantify change in seagrass ecosystems. The overarching objective of Hakai Nearshore research is to investigate the role of habitats and their associated communities, in the face of stress and disturbances from global climate change and local coastal perturbations. 
+
+This package contains a core subset of the Hakai Nearshore seagrass monitoring data, focusing on key biophysical variables of the seagrass habitat.
+
+Author
+Name: Zachary L. Monteith
+ORCID: update
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: zach@hakai.org
+
+Co-Author
+Name: Faye Manning
+ORCID: https://orcid.org/0009-0002-9940-2458
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: faye.manning@hakai.org
+
+Co-investigator
+Name: Angeleen Olson
+ORCID: https://orcid.org/0000-0001-8443-1868
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: angeleen.olson@hakai.org
+
+Principal Investigator
+Name: Margot Hessing-Lewis
+ORCID: 
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: margot@hakai.org
+
+Date of data collection: data spans years 2015 to 2022
+
+Geographic location of data collection: Nine surveys sites on the Central Coast of British Columbia, Canada, bounded by 52.07 degrees N, -127.86 degrees E, 51.64 degress S, and -128.47 degrees W.
+
+Information about funding sources that supported the collection of the data: These surveys were conduction by the Hakai Institute, with funding from the Tula Foundation.
+
+
+SHARING/ACCESS INFORMATION
+
+Licenses/restrictions placed on the data: This data package is licensed under the Creative Commons Attribution 4.0 International License (CC-BY 4.0). For full details of this license, please see included 'LICENSE.txt' file.
+
+Links to publications that cite or use the data: 
+
+Links to other publicly accessible locations of the data: 
+Seagrass density surveys on the Central Coast of British Columbia
+<http://ipt.iobis.org/obiscanada/resource?r=hakai_seagrassdensitysurveys>
+
+Links/relationships to ancillary data sets: 
+
+Was data derived from another source?
+If yes, list source(s): 
+
+Recommended citation for this dataset: 
+Monteith ZL., Manning F., Olson AM., Hissing-Lewis M. (2023). Seagrass site-level production - British Columbia Central Coast (v1.1.0). Hakai Institute. https://doi.org/10.21966/ezev-0v96.
+
+
+DATA & FILE OVERVIEW
+
+File List: <list all files (or folders, as appropriate for dataset organization) contained in the dataset, with a brief description>
+
+Relationship between files, if important: 
+
+Additional related data collected that was not included in the current data package: 
+
+Are there multiple versions of the dataset? Yes
+If yes, name of file(s) that was updated: Please refer to 'CHANGELOG.txt' for a detailed history of file changes within this package.
+
+
+METHODOLOGICAL INFORMATION
+
+Description of methods used for collection/generation of data: Please refer to 'Hakai Seagrass Protocol.pdf' for a detailed coverage of methods used to obtain this data.
+
+Methods for processing the data: This data has been checked with quality control (QC) scripts to catch and correct obvious mistakes resulting from transcription errors. These datasets should match the raw data as present on the field data sheets.
+
+Instrument- or software-specific information needed to interpret the data: N/A
+
+Standards and calibration information, if appropriate: N/A
+
+Environmental/experimental conditions: N/A
+
+Describe any quality-assurance procedures performed on the data: Survey data is entered using structured forms on a tablet to minimize entry errors.
+
+People involved with sample collection, processing, analysis and/or submission: In addition to authors, Derek Van Maanen, Carolyn Prentice, Krystal Bachen, and members of the Hakai Nearshore Ecology group have been essential to the collection, and curation of this dataset since it's inception.
+
+
+DATA-SPECIFIC INFORMATION: For full details of dataset variables, please refer to 'data_dictionary.csv'
