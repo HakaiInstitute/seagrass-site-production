@@ -32,7 +32,7 @@ Email: angeleen.olson@hakai.org
 
 Principal Investigator
 Name: Margot Hessing-Lewis
-ORCID: 
+ORCID: https://orcid.org/0000-0002-9956-955X
 Institution: Hakai Institute, Tula Foundation
 Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
 Email: margot@hakai.org
@@ -60,7 +60,7 @@ Was data derived from another source?
 If yes, list source(s): 
 
 Recommended citation for this dataset: 
-Monteith ZL., Manning F., Olson AM., Hissing-Lewis M. (2023). Seagrass site-level production - British Columbia Central Coast (v1.1.0). Hakai Institute. https://doi.org/10.21966/ezev-0v96.
+Monteith ZL., Manning F., Olson AM., Hessing-Lewis M. (2023). Seagrass site-level production - British Columbia Central Coast (v1.1.0). Hakai Institute. https://doi.org/10.21966/ezev-0v96.
 
 
 DATA & FILE OVERVIEW
