@@ -11,7 +11,7 @@ This package contains a core subset of the Hakai Nearshore seagrass monitoring d
 
 Author
 Name: Zachary L. Monteith
-ORCID: update
+ORCID: https://orcid.org/0000-0003-4963-8374
 Institution: Hakai Institute, Tula Foundation
 Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
 Email: zach@hakai.org
