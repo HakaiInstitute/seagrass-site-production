@@ -52,7 +52,7 @@ Links to publications that cite or use the data:
 
 Links to other publicly accessible locations of the data: 
 Seagrass density surveys on the Central Coast of British Columbia
-<http://ipt.iobis.org/obiscanada/resource?r=hakai_seagrassdensitysurveys>
+http://ipt.iobis.org/obiscanada/resource?r=hakai_seagrassdensitysurveys
 
 Links/relationships to ancillary data sets: 
 
