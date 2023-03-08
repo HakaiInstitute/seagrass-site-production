@@ -47,13 +47,16 @@ zmDensity <-  rename_with(zmDensity, tolower)
 colnames(zmDensity) <- gsub("\\.", "_", colnames(zmDensity))
 names(zmDensity)[names(zmDensity) == "transect_dist__m_"] <- "transect_dist_m"
 names(zmDensity)[names(zmDensity) == "canopy_height__cm_"] <- "canopy_height_cm"
+zmDensity <- select(zmDensity, -action)
 colnames(zmDensity)
 ```
+
 Tidy habitat column names
 ```{r}
 zmHabitat <-  rename_with(zmHabitat, tolower)
 colnames(zmHabitat) <- gsub("\\.", "_", colnames(zmHabitat))
 names(zmHabitat)[names(zmHabitat) == "transect_dist__m_"] <- "transect_dist_m"
+zmHabitat <- select(zmHabitat, -action)
 colnames(zmHabitat)
 ```
 
