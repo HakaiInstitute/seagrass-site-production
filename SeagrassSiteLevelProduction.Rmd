@@ -98,6 +98,7 @@ viewYearContinuous <- function (data, year, yVar, xVar = "survey") {
 
 Plot each year of data; check correct number of values are present
 ```{r}
+
 viewYearCounts(zmDensity, "2015")
 viewYearCounts(zmDensity, "2016")
 viewYearCounts(zmDensity, "2017")
@@ -236,7 +237,7 @@ habitat_tendersnames_tofix$replace <- c("angeleen", "angeleen,carolyn,krystal", 
 zmHabitat <- FindReplace(zmHabitat, "dive_supervisor", habitat_tendersnames_tofix, from = "name", to = "replace", exact = TRUE, vector = FALSE)
 ```
 
-#### Join site metadata
+#### Join site metadata 
 
 Tidy up column and site names
 ```{r}
@@ -260,7 +261,7 @@ Join site metadata onto data sets
 ```{r}
 zmDensity <- left_join(zmDensity, (select(sites, "point_name", "substrate", "decimal_lat", "decimal_long", "end_transect_decimal_lat", "end_transect_decimal_lon")), by = c("site_id" = "point_name"))
 
-zmHabitat <- left_join(zmHabitat, (select(sites, "point_name", "substrate", "decimal_lat", "decimal_long", "end_transect_decimal_lat", "end_transect_decimal_lon")), by = c("site_id" = "point_name"))
+zmHabitat <- left_join(zmHabitat, (select(sites, "point_name", "decimal_lat", "decimal_long", "end_transect_decimal_lat", "end_transect_decimal_lon")), by = c("site_id" = "point_name"))
 ```
 
 ***
