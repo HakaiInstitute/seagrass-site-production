@@ -1,16 +1,25 @@
 ---
-title: "Seagrass Site-level production data package"
+title: "Seagrass Site-level Production"
 author: "Zach Monteith & Faye Manning"
-date: "2021-10-27"
-output: html_document
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    code_folding: hide 
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Seagrass Site-level production data package
-This script loads, cleans, and combines the datasets required for the Hakai Nearshore: Seagrass Site-level production data package. All of these data are stored on the Hakai EIMS Data Portal and accessed using the HakaiApi R Package. 
+***
+
+## Seagrass Site-level Production Data Package
+This script loads, cleans, and combines the datasets required for the Hakai Nearshore: Seagrass Site-level Production data package. All of these data are stored on the Hakai EIMS Data Portal. 
+
+**Notes for adding data:** When adding a new year's worth of survey data, *do not replace the existing raw data files* in this data package with downloads for all years from the EIMS portal; rather, download *only* the new year's raw data and *append* that to the existing raw data files. This is important because the existing raw data files have undergone a post-portal download QC and ongoing changes to the portal can/have created issues for those older years. The same thing should be done for retroactively adding missing data from previous years.
+
+Bottom line: *always add to the existing raw data file rather than replace the whole file.*
+
 
 ***
 
@@ -22,7 +31,7 @@ rm(list = ls())
 ```
 
 Load necessary packages
-```{r}
+```{r results = "hide", warning = FALSE}
 lapply(c("tidyverse",
          "lubridate", 
          "magrittr",
@@ -32,7 +41,9 @@ lapply(c("tidyverse",
 ```
 
 ***
+
 ### Load and tidy data
+
 Load data
 ```{r}
 zmDensity <- read.csv("./raw-data/seagrass_density.csv")
@@ -47,7 +58,7 @@ zmDensity <-  rename_with(zmDensity, tolower)
 colnames(zmDensity) <- gsub("\\.", "_", colnames(zmDensity))
 names(zmDensity)[names(zmDensity) == "transect_dist__m_"] <- "transect_dist_m"
 names(zmDensity)[names(zmDensity) == "canopy_height__cm_"] <- "canopy_height_cm"
-zmDensity <- select(zmDensity, -action)
+zmDensity <- select(zmDensity, -c(action, comments))
 colnames(zmDensity)
 ```
 
@@ -56,19 +67,22 @@ Tidy habitat column names
 zmHabitat <-  rename_with(zmHabitat, tolower)
 colnames(zmHabitat) <- gsub("\\.", "_", colnames(zmHabitat))
 names(zmHabitat)[names(zmHabitat) == "transect_dist__m_"] <- "transect_dist_m"
-zmHabitat <- select(zmHabitat, -action)
+zmHabitat <- select(zmHabitat, -c(action, comments))
 colnames(zmHabitat)
 ```
+
 
 ### Data QC
 Before the data is ready to be packaged, this section will perform some basic quality control checks, ensuring all data is present and all values seem appropriate
 
+
 #### Density surveys
 Check all data are present:
-- annual sites (Triquet, Goose, McMullin) have one set of data each year
-- seasonal sites (Choked, Pruth, Koeye) have the same number of summer visits
-- Choked and Pruth have February and November visits in 2017 and 2018, and a February visit in 2019
-- secondary annual sites (McMullin S, Goose SE, Triquet N) only have 3 observations transects in 2018
+
+* annual sites (Triquet, Goose, McMullin) have one set of data each year
+* seasonal sites (Choked, Pruth, Koeye) have the same number of summer visits
+* Choked and Pruth have February and November visits in 2017 and 2018, and a February visit in 2019
+* secondary annual sites (McMullin S, Goose SE, Triquet N) only have 3 observations transects in 2018
 
 Create a function for viewing number of observations at all sites, in a year, by month
 ```{r}
@@ -138,9 +152,11 @@ zmDensity %>%
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-Once suspect values have been found, confirm value with hard copy datasheets.
-If values have been incorrectly entered, fix value in database.
-Repeat as necessary, then re-download density data from the portal. 
+**TO DO:**
+
+* Once suspect values have been found, confirm value with hard copy datasheets
+* If values have been incorrectly entered, fix value in database
+* Repeat as necessary, then re-download density data from the portal 
 
 
 #### Habitat surveys 
@@ -157,24 +173,28 @@ viewYearCounts(zmHabitat, "2021")
 viewYearCounts(zmHabitat, "2022")
 ```
 
-Once suspect values have been found, confirm value with hard copy datasheets.
-Correct any errors in database, then re-download habitat data from the portal. 
+**TO DO:**
+
+* Once suspect values have been found, confirm value with hard copy datasheets
+* Correct any errors in database, then re-download habitat data from the portal 
+
 
 ##### Suspect values checked
-2020 - FM
-2021 - FM
-2022 - FM
+
+- 2020 FM
+- 2021 FM
+- 2022 FM
 
 
 #### Fix and QC depths
 
-2016 depths are in feet -- convert to metres
+2016 depths are in feet, so convert to metres
 ```{r}
 zmDensity <- zmDensity %>% 
     mutate(depth = if_else(year(date) == 2016, depth * 0.3048, depth))
 ```
 
-Flag depths >10m and see if they look like entering errors (missed decimal; check raw data sheets if needed)
+Flag depths >10m; these should all be entering errors (missing decimal point); check raw data sheets for exceptions if needed
 ```{r}
 zmDensity %>% 
   filter(depth >= 10)
@@ -187,12 +207,15 @@ zmDensity <- zmDensity %>%
 ```
 
 #### Replace blank cells with NA
+
 ```{r}
 zmDensity <- zmDensity %>% mutate_all(na_if,"")
 zmHabitat <- zmHabitat %>% mutate_all(na_if,"")
 ```
 
 #### Fix collector and tender names
+
+**NOTE:** New divers, tenders, or tender combos may require the list of accepted names to be updated. 
 
 Import acceptable names
 ```{r}
@@ -204,7 +227,6 @@ colnames(diversnames_accepted) <- "name"
 tendersnames_accepted <- names$tenders %>% data.frame
 colnames(tendersnames_accepted) <- "name"
 ```
-
 
 Density dataset
 ```{r}
@@ -269,15 +291,11 @@ zmHabitat <- left_join(zmHabitat, (select(sites, "point_name", "decimal_lat", "d
 
 ***
 
-### Data Subset
-Once all data have been checked, subset the required variables for this data set from each data frame, and then save into finished, usable data sets
+### Save finished data sets
+
 ```{r}
 write.csv(zmDensity, "./output/seagrass_density_survey.csv")
 write.csv(zmHabitat,"./output/seagrass_habitat_survey.csv")
 ```
 
 ***
-
-#### Final notes
-- the data portal concatenates everything from the "comments" column into the "quality_log" column, so consider omitting the blank "comments" column in the final, usable data sets?
-
