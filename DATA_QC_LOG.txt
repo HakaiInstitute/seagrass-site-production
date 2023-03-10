@@ -1,0 +1,16 @@
+# Data Quality Control Log
+All notable data quality control measures will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.1.0] - 2023-01-12
+### Notes ###
+- This is a first attempt at keeping a data QC log in this format for this dataset
+
+### Tasks ###
+- Checked completeness of density and habitat datasets by aggregating data to event level and cross-referencing with events loaded from EIMS Hakai Data Portal to ensure that all site visits were included 
+- Added missing flowering shoots data to raw data file 
+- Corrected 2016 depths from feet to metres
+- Corrected depths >10m (added missing decimal points)
+- Converted all blank cells to NA and removed columns with all NA data
+- Corrected all instances in both density and habitat datasets where multiple names were used to refer to the same thing for "surveyor" and "dive_supervisor"
