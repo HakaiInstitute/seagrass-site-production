@@ -21,7 +21,7 @@ This package contains a core subset of the Hakai Nearshore seagrass monitoring d
 - Email: zach@hakai.org
 
 ### Co-Author
-####Name: Faye Manning
+#### Name: Faye Manning
 - ORCID: https://orcid.org/0009-0002-9940-2458
 - Institution: Hakai Institute, Tula Foundation
 - Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
