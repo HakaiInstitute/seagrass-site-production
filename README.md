@@ -14,52 +14,52 @@ This package contains a core subset of the Hakai Nearshore seagrass monitoring d
 ## Authors
 
 ### Author
-Name: Zachary L. Monteith
-ORCID: https://orcid.org/0000-0003-4963-8374
-Institution: Hakai Institute, Tula Foundation
-Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-Email: zach@hakai.org
+#### Name: Zachary L. Monteith
+- ORCID: https://orcid.org/0000-0003-4963-8374
+- Institution: Hakai Institute, Tula Foundation
+- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+- Email: zach@hakai.org
 
 ### Co-Author
-Name: Faye Manning
-ORCID: https://orcid.org/0009-0002-9940-2458
-Institution: Hakai Institute, Tula Foundation
-Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-Email: faye.manning@hakai.org
+#### Name: Faye Manning
+- ORCID: https://orcid.org/0009-0002-9940-2458
+- Institution: Hakai Institute, Tula Foundation
+- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+- Email: faye.manning@hakai.org
 
 ### Co-investigator
-Name: Angeleen Olson
-ORCID: https://orcid.org/0000-0001-8443-1868
-Institution: Hakai Institute, Tula Foundation
-Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-Email: angeleen.olson@hakai.org
+#### Name: Angeleen Olson
+- ORCID: https://orcid.org/0000-0001-8443-1868
+- Institution: Hakai Institute, Tula Foundation
+- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+- Email: angeleen.olson@hakai.org
 
 ### Co-Author
-Name: Krystal Bachen 
-ORCID: https://orcid.org/0000-0003-0886-157X
-Institution: Hakai Institute, Tula Foundation
-Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-Email: krystal.bachen@hakai.org
+#### Name: Krystal Bachen 
+- ORCID: https://orcid.org/0000-0003-0886-157X
+- Institution: Hakai Institute, Tula Foundation
+- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+- Email: krystal.bachen@hakai.org
 
 ### Co-Author
-Name: Carolyn Prentice
-ORCID: https://orcid.org/0000-0002-9644-8496
-Institution: Hakai Institute, Tula Foundation
-Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-Email: carolyn.prentice@hakai.org
+#### Name: Carolyn Prentice
+- ORCID: https://orcid.org/0000-0002-9644-8496
+- Institution: Hakai Institute, Tula Foundation
+- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+- Email: carolyn.prentice@hakai.org
 
 ### Co-Author
-Name: Derek Van Maanen
-Institution: Hakai Institute, Tula Foundation
-Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-Email: derek.vanmaanen@hakai.org
+#### Name: Derek Van Maanen
+- Institution: Hakai Institute, Tula Foundation
+- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+- Email: derek.vanmaanen@hakai.org
 
 ### Principal Investigator
-Name: Margot Hessing-Lewis
-ORCID: https://orcid.org/0000-0002-9956-955X
-Institution: Hakai Institute, Tula Foundation
-Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-Email: margot@hakai.org
+#### Name: Margot Hessing-Lewis
+- ORCID: https://orcid.org/0000-0002-9956-955X
+- Institution: Hakai Institute, Tula Foundation
+- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+- Email: margot@hakai.org
 
 ## Date of data collection: 
 Data spans years 2015 to 2022
