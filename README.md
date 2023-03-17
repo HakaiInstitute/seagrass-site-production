@@ -14,52 +14,52 @@ This package contains a core subset of the Hakai Nearshore seagrass monitoring d
 ## Authors
 
 ### Author
-#### Name: Zachary L. Monteith
-- ORCID: https://orcid.org/0000-0003-4963-8374
-- Institution: Hakai Institute, Tula Foundation
-- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-- Email: zach@hakai.org
+Name: Zachary L. Monteith
+ORCID: https://orcid.org/0000-0003-4963-8374
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: zach@hakai.org
 
 ### Co-Author
-#### Name: Faye Manning
-- ORCID: https://orcid.org/0009-0002-9940-2458
-- Institution: Hakai Institute, Tula Foundation
-- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-- Email: faye.manning@hakai.org
+Name: Faye Manning
+ORCID: https://orcid.org/0009-0002-9940-2458
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: faye.manning@hakai.org
 
 ### Co-investigator
-#### Name: Angeleen Olson
-- ORCID: https://orcid.org/0000-0001-8443-1868
-- Institution: Hakai Institute, Tula Foundation
-- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-- Email: angeleen.olson@hakai.org
+Name: Angeleen Olson
+ORCID: https://orcid.org/0000-0001-8443-1868
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: angeleen.olson@hakai.org
 
 ### Co-Author
-#### Name: Krystal Bachen 
-- ORCID: https://orcid.org/0000-0003-0886-157X
-- Institution: Hakai Institute, Tula Foundation
-- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-- Email: krystal.bachen@hakai.org
+Name: Krystal Bachen 
+ORCID: https://orcid.org/0000-0003-0886-157X
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: krystal.bachen@hakai.org
 
 ### Co-Author
-#### Name: Carolyn Prentice
-- ORCID: https://orcid.org/0000-0002-9644-8496
-- Institution: Hakai Institute, Tula Foundation
-- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-- Email: carolyn.prentice@hakai.org
+Name: Carolyn Prentice
+ORCID: https://orcid.org/0000-0002-9644-8496
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: carolyn.prentice@hakai.org
 
 ### Co-Author
-#### Name: Derek Van Maanen
-- Institution: Hakai Institute, Tula Foundation
-- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-- Email: derek.vanmaanen@hakai.org
+Name: Derek Van Maanen
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: derek.vanmaanen@hakai.org
 
 ### Principal Investigator
-#### Name: Margot Hessing-Lewis
-- ORCID: https://orcid.org/0000-0002-9956-955X
-- Institution: Hakai Institute, Tula Foundation
-- Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
-- Email: margot@hakai.org
+Name: Margot Hessing-Lewis
+ORCID: https://orcid.org/0000-0002-9956-955X
+Institution: Hakai Institute, Tula Foundation
+Address: PO Box 309, Heriot Bay, British Columbia, V0P 1H0, Canada
+Email: margot@hakai.org
 
 ## Date of data collection: 
 Data spans years 2015 to 2022
@@ -93,11 +93,24 @@ Monteith ZL., Manning F., Olson AM., Hessing-Lewis M. (2023). Seagrass site-leve
 
 # DATA & FILE OVERVIEW
 
-## File List: <list all files (or folders, as appropriate for dataset organization) contained in the dataset, with a brief description>
+## File List: 
+- README.md: provides overview to data package as whole, including abstract, authorship, and citation information
+- CHANGELOG.txt: tracks changes to data package over time, across current and previous versions
+- data_dictionary.csv: provides units and explanations for all variables found within data files
+- LICENSE.txt: includes full text of Creative Commons Attribution 4.0 International license for reference
+- Hakai Seagrass Protocol.pdf: the full protocol for the Hakai seagrass monitoring programs, 
+including protocols used for collecting data contained within this package
+- seagrass_density.csv: data file, contains measurements of **Z. marina** shoot density, canopy height, and associated metadata
+- seagrass_habitat.csv: data file, contains biophysical survey information along monitoring transects, including adjacent habitat
+types, substrates, patchiness, subdominant vegetations and percent covers when present
+
+-<list all files (or folders, as appropriate for dataset organization) contained in the dataset, with a brief description>
 
 ## Relationship between files, if important: 
 
-## Additional related data collected that was not included in the current data package: 
+## Additional related data collected that was not included in the current data package:
+This package is a subset of the seagrass monitoring dataset. Additional data collected includes fish and macro invertebrate surveys along same transects, **Z. marina** shoot collections with associated
+morphometrics, epiphyte and epifauna diversity, abundance, and biomass, **Z. marina** shoot growth rates, and in situ subtidal temperature timeseries.
 
 ## Are there multiple versions of the dataset? Yes
 ### If yes, name of file(s) that was updated: 
