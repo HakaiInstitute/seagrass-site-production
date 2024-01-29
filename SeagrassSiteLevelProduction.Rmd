@@ -58,7 +58,7 @@ zmDensity <-  rename_with(zmDensity, tolower)
 colnames(zmDensity) <- gsub("\\.", "_", colnames(zmDensity))
 names(zmDensity)[names(zmDensity) == "transect_dist__m_"] <- "transect_dist_m"
 names(zmDensity)[names(zmDensity) == "canopy_height__cm_"] <- "canopy_height_cm"
-zmDensity <- select(zmDensity, -c(action, comments))
+zmDensity <- select(zmDensity, -c(ACTION, Comments))
 colnames(zmDensity)
 ```
 
